@@ -49,3 +49,36 @@ function factorialize(num) { // Use recursive function
 
 console.log(factorialize(5)); // 5 * 4 * 3 * 2 * 1 = 120
 ```
+
+## Find the Longest Word in a String
+
+- create a function that takes a sentence as a string argument
+- The function should return the number of the characters in the longest word in the sentence.
+
+```js
+function findLongestWordLength(str) {
+    let longestLength = 0;  // Keep a count of the longest word length as it iterates through the string
+    let currentLength = 0;  // Keep a count of the length of the current word
+
+    for (let i = 0; i < str.length; i++) {  // Iterate through string
+        if (str[i] === " ") {       // If the character at the current position of 'i' is whitespace (i.e. if it's the end of a word)
+            if (currentLength > longestLength) {    // and if the current length of the word is greater than the longest length logged
+                longestLength = currentLength;      // then the longestLength equals the value of the currentLength
+            }
+            currentLength = 0;  // reset the count value of the current length and loop through the function.
+        } else {
+            currentLength++;    // If above condition are not met (i.e. if it's still iterating through a word), move to the next character count
+            /* If the code stops here, it is fine as long as the longest word is not at the end of the string.
+            This is because the code is setup to update the longestLength variable only when it encounters a whitespace.
+            Because of this setup, when it reaches the end of a string, it will not update the variable accordingly 
+            even if the last word of the string is the longest in the sentence.
+            Add the following 'if' statement AFTER the loop to check to see if the length of the current word (the last word of the string)
+            is indeed the longest word of the string.*/
+            if (currentLength > longestLength) {
+                longestLength = currentLength;
+            }
+        }
+    }
+    return longestLength;
+}
+```
