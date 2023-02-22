@@ -82,3 +82,42 @@ function findLongestWordLength(str) {
     return longestLength;
 }
 ```
+
+## Return Largest Number in Arrays
+
+- An array containing sub-arrays is passed to a function.
+- The function created should return the largest number in each array in a new array.
+
+- declare a new array with an empty array
+- iterate through the array and its sub-arrays (one subarray at a time)
+- keep track of the largest number and compare to current number
+- if largest number in a sub-array is found, push that number to the new array variable
+
+```js
+function largestOfFour(arr) {
+    let newArr = [];    // declare a new variable 'newArr' with an empty array to which the largest number of each subarray will be added.
+
+    for (let i = 0; i < arr.length; i++) {  // for loop to iterate through each subarray
+        let largestNum = arr[i][0];
+        /* largestNum variable is declared with value of arr at index [i][0].
+        It is indicating where the iteration should begin.
+        It is not 'arr[i][j]' since 'j' has not been declared yet.*/
+        for (let j = 0; j < arr[i].length; j++) {   // for loop to iterate through each element of subarray
+            if (arr[i][j] > largestNum) {   // if number value at 'arr[i][j]' is greater than the current largest number
+                largestNum = arr[i][j];     // then reassign largestNum to the number value at the current 'arr[i][j] position
+            }
+        }
+        newArr.push(largestNum);    // AFTER iterating through the first subarray, push largestNum of that subarray to 'newArr'. Then carry on.
+        /* The placement of the push was a bit confusing at first. 
+        Partly because the editor screen in FCC has the same color for all curly braces.
+        It's a bit more clear in vscode.
+        Placing the push anywhere above this line in the code will return unexpected results. 
+        It will be constantly pushing numbers into 'newArr'
+        At first I had 'newArr.push(arr[i][j]);' but the console would read 'j is not defined' since it's outside the 2nd for loop
+        Then realized the 'arr[i][j]' is assigned to 'largestNum'.
+        I have to get used to thinking through the logic of the problem. 
+        Honestly, this one was a bit of a fluke.*/
+    }
+    return newArr;
+}
+```
