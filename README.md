@@ -34,3 +34,18 @@ he + dlrow oll
 h + dlrow olle
 dlrow olleh     // reversed string
 ```
+
+## Factorialize a Number
+
+- Return a factorial of a positive integer passed to the function
+
+```js
+function factorialize(num) { // Use recursive function 
+    if (num === 0) {    // base case. If num strictly equals 0, return the result
+        return 1;       // When base case is reached, the result will be multiplied by 1 and the function will stop execution
+    }                   // It is viable to put an 'else' here but it doesn't seem necessary
+    return num * factorialize(num - 1); // Multiply num by the function with decrementing num value until base case is reached
+}
+
+console.log(factorialize(5)); // 5 * 4 * 3 * 2 * 1 = 120
+```
