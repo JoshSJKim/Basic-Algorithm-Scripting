@@ -121,3 +121,73 @@ function largestOfFour(arr) {
     return newArr;
 }
 ```
+
+## Confirm the Ending
+
+- Create a function 'confirmEnding', which takes two strings (str, target) as its arguments.
+- The objective of the function is to check if the first string argument (str) passed to the function ends with the second string argument (target)
+
+- I need to iterate through the first string argument
+- Iteration should be conducted backwards.
+
+```js
+function confirmEnding(str, target) {
+  for (let i = str.length - 1; i >= 0; i--) {
+    for (let j = target.length -1; j >= 0; j--) {
+      if (str[i] === target[j]) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+  }
+  return str;
+}
+```
+
+- Initially tried the above, and it failed.
+- The problem is that if the last letter matches, it immediately returns true, even if the next character in sequence does not match.
+- It needs to iterate through the entire target string before returning a result.
+  
+- But come to think of it, I think this is getting way too complex.
+- There has to be a simpler method.
+
+- if I subtract the length of target from the length of str, I could use that value to extract the number of characters from 'str' equal to that of 'target'.
+- Then, if the value of the extraction from 'str' is equal to the value of 'target', return true.
+- if not return false.
+- use slice() method
+
+```js
+function confirmEnding(str, target) {
+    let diff = str.length - target.length; //declare a variable and assign it the value of the diff. between the lengths of 'str' and 'target'
+    let extract = str.slice(diff); //declare a variable and assign it the value of applying slice() to the string.
+    // If a single parameter is passed to slice(), it will begin extraction from the character following the index position specified to the end of the string.
+    // I found this to be pleasantly convenient.
+
+    if (extract === target) { // if the value extracted through slice() is equivalent to the value of 'target'
+        return true;         
+    } else {
+        return false;
+    }
+}
+```
+
+- This passes, now looking at it in retrospect, I think it can be simplified without declaring variables.
+
+```js
+function confirmEnding(str, target) {
+    return str.slice(str.length - target.length) === target;
+}
+```
+
+- I still find declaring variables to be more readable.
+- I guess it's because I still have trouble 'thinking' in JS. I need to see it visually.
+
+- NOTE: looking at the solutions provided in FCC, if a negative number is provided as the first parameter to slice(), the offset is then backwards from the end of the string.
+
+```js
+function confirmEnding(str, target) {
+    return str.slice(-target.length) === target;
+}
+```
