@@ -256,3 +256,24 @@ function findElement(arr, func) {
 ```
 
 ## Boo Who
+
+- create a function that checks if the argument passed to the function is a 'boolean'
+- Return true or false
+
+- sounds simple enough but I had a bit of trouble with this one.
+- For one thing, I didn't know that I had to use 'boolean' as a string to compare.
+- I had the right idea initially, but it took me a while to figure out how to compare the (typeof bool) to 'boolean'.
+
+- use an 'if' statement to check if the 'typeof' argument value is a "boolean".
+- Return true if it is, false if not.
+
+```js
+function booWho(bool) {
+    if ((typeof bool) === "boolean") { // I initially had 'if ((typeof bool) === true || false)', which was silly.
+        return true;
+    }
+    return false;
+}
+```
+
+## Title Case a Sentence
