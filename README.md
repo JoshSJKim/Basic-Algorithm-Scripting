@@ -213,3 +213,26 @@ function repeatStringNumTimes(str, num) {
 
 ## Truncate a String
 
+- create a function that truncates a string (first argument) if it is longer than the specified max string length (second argument).
+- The returned truncated string should end with ```...```
+- If the 'num' value is greater than or equal to the string length, return the string.
+
+- Declare a variable to return the result
+- Use an if statement to determine whether the string length exceeds the max value
+  - if it exceeds the max value, use slice() method to truncate the string and append '...'
+  - if it does not exceed the max value, return the string.
+
+```js
+function truncateString(str, num) {
+    let newStr = ""; // initialize a new variable. Strings are immutable.
+
+    if (str.length > num) {
+        newStr = str.slice(0, num).concat('...'); // wasn't sure if .concat() was going to work. Now I know it does!
+    } else if(str.length <= num) { // 'if' is not really necessary. I just put it there for personal clarification
+        newStr = str;
+    }
+    return newStr;
+}
+```
+
+## Finders Keepers
