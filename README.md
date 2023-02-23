@@ -191,3 +191,25 @@ function confirmEnding(str, target) {
     return str.slice(-target.length) === target;
 }
 ```
+
+## Repeat a String Repeat a String
+
+- create a function that repeats a string (str) for 'num' times specified.
+- It should return an empty string if num is not a positive number.
+
+- I should use a loop to repeat the process 'num' times
+- I should declare a new variable to 'store' the result
+
+```js
+function repeatStringNumTimes(str, num) {
+    let newStr = "";        // declare a new variable to store the result
+    while (num > 0) {       // while 'num' is greater than 0,
+        newStr += str;      // append 'str' to 'newStr'
+        num--;              // decrement 'num' by 1 after every loop until num = 0
+    }
+    return newStr;
+}
+```
+
+## Truncate a String
+
