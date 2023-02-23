@@ -236,3 +236,23 @@ function truncateString(str, num) {
 ```
 
 ## Finders Keepers
+
+- create a function that iterates through an array (arr) and returns the first element that returns 'true' for the function (func) passed to the function.
+- If no element passes, return 'undefined'
+
+- use a 'for' loop to iterate through the array passed to the function
+- if 'num' returns 'true' when it is passed to the function that is passed through the function as it iterates through the array, return that 'num' in the array.
+- If none of the 'num' values return true, return 'undefined'
+
+```js
+function findElement(arr, func) {
+    for (let num = 0; num < arr.length; num++) { // for loop to iterate through given array
+        if (func(arr[num]) === true) {  // if current 'num' of the array returns true for the function passed to the function
+            return (arr[num]);  // return that 'num'
+        }
+    }
+    return undefined;   // If none of the elements return true, return 'undefined'. Notice this return is placed outside of the loop. 
+}
+```
+
+## Boo Who
