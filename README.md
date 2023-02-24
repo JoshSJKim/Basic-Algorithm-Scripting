@@ -276,4 +276,64 @@ function booWho(bool) {
 }
 ```
 
-## Title Case a Sentence
+## Various Methods
+
+- There are more and more methods that are mentioned in the challenges, but I have not yet been introduced to them.
+- I guess it's time to start digging around and find out for myself.
+- 
+### split()
+
+- split() method is used to split a string into an array of substrings.
+- It takes two parameters
+
+```js
+string.split(separator, limit);
+```
+
+- The separator specifies the character(s) or regular expression used to determine where to split the string.
+- If 'separator' is not specified, the entire string will be returned.
+- The 'limit' parameter specifies the max number of splits to be performed.
+- if not specified, all possible splits will be returned.
+
+```js
+const str = "apple, banana, orange, grape, kiwi";
+const arr = str.split(",", 3);
+console.log(arr); // ["apple", "banana", "orange"]
+```
+
+- In the above example, the string will be split at every ',', three times.
+
+### toUpperCase() / toLowerCase()
+
+- Append .toUpperCase() or .toLowerCase() to a variable assigned to a string to change the letter-casing
+
+```js
+someString.toUpperCase();
+someString.toLowercase();
+```
+
+- It does not take any parameters
+
+### .charAt()
+
+- This method is used to extract a character specified by the passed parameter
+- It uses zero-based indexing
+
+```js
+let string = "Hello world!";
+console.logstring.charAt(4);   // 'l'
+```
+
+- if the specified parameter value is outside the range of valid indices, it will return an empty string.
+
+### .join()
+
+- .join() method works opposite to .split()
+- It takes a separator parameter, which is used to join the elements of an array into a string.
+- If the separator is not specified, it will use its default separator (',').
+
+```js
+const arr = ['apple', 'banana', 'orange'];
+const str = arr.join(" ");  // separate elements with a whitespace
+console.log(str); // "apple banana orange"
+```
