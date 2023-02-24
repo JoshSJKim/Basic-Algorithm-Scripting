@@ -280,7 +280,7 @@ function booWho(bool) {
 
 - There are more and more methods that are mentioned in the challenges, but I have not yet been introduced to them.
 - I guess it's time to start digging around and find out for myself.
-- 
+
 ### split()
 
 - split() method is used to split a string into an array of substrings.
@@ -321,7 +321,7 @@ someString.toLowercase();
 
 ```js
 let string = "Hello world!";
-console.logstring.charAt(4);   // 'l'
+console.log(string.charAt(4));   // 'l'
 ```
 
 - if the specified parameter value is outside the range of valid indices, it will return an empty string.
@@ -337,3 +337,70 @@ const arr = ['apple', 'banana', 'orange'];
 const str = arr.join(" ");  // separate elements with a whitespace
 console.log(str); // "apple banana orange"
 ```
+
+## Title Case a Sentence
+
+- Create a function that takes a sentence string and converts the first letter of every word to uppercase and remaining words to lowercase
+
+```js
+function titleCase(str) {
+    let newArr = [];        // initialize a new variable 'newArr' with an empty array
+    let splitArr = str.split(" ");  // initialize a new variable and assign it the result of splitting the string passed to the function. Separate with whitespace
+  for (let i = 0; i < splitArr.length; i++) {   // setup the for loop to iterate through the split string
+      if (/^[A-Z][a-z]*$/.test(splitArr[i])) {  // use regex to check if the first character of the current element is uppercase and the remaining are lowercase
+          newArr.push(splitArr[i]);             // if the regex test returns true, push that element to 'newArr'
+      } else {                                  // if the regex test does not return true
+        splitArr[i] = splitArr[i].toLowerCase();    // Convert all characters of the current element to lowercase
+        splitArr[i] = splitArr[i].charAt(0).toUpperCase() + splitArr[i].slice(1);
+        // After converting to lowercase, extract the character at (charAt) index 0 and convert that character to uppercase.
+        // Concatenate the character converted to uppercase with the result of slicing the current element at index 1.
+        // .slice(1) will extract all characters from index 1 to the end of the string.
+        newArr.push(splitArr[i]);   // push the newly updated string and push to 'newArr'
+      }
+  }
+  return newArr.join(" ");  // Join the elements from 'newArr' with a whitespace between each element
+}
+
+console.log(titleCase("I'm a little tea pot")); // I'm A Little Tea Pot
+```
+
+- I'm sure there are much simpler methods.
+- But this is what I have at the moment
+
+## Slice and Splice
+
+- create a function that takes two arrays and an index value as its arguments
+- The function should take the elements of the first array and insert it into the second array in order.
+- The insertion should begin at the index specified.
+- The original arrays should not be modified.
+
+```js
+function frankenSplice(arr1, arr2, n) {
+    let arr2Slice = arr2.slice(0);  // slice arr2 and assign it to a new variable to prevent modification of the original array
+    for (let i = arr1.length - 1; i >= 0; i--) { // Iterate through arr1 in reverse order
+        arr2Slice.splice(n, 0, arr1[i]);    // Insert the iterated elements one by one into arr2Slice starting at index 'n'
+    }
+    return arr2Slice;
+}
+
+console.log(frankenSplice([1, 2, 3][4, 5, 6], 1));  // [4, 1, 2, 3, 5, 6]
+```
+
+Shown below is what I originally had
+
+```js
+function frankenSplice(arr1, arr2, n) {
+  let arr2Slice = arr2.slice(0);
+  for (let i = 0; i < arr1.length; i++) {
+    arr2Slice.splice(n, 0, arr1[i]);
+  }
+  return arr2Slice;
+}
+
+console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1)); // [4, 3, 2, 1, 5, 6]
+```
+
+- I didn't take into account that each iterated element is inserted in to the same index 'n' position.
+- Which in turn would 'push' the inserted elements.
+- Reverse the loop iteration to reverse this effect.
+  
