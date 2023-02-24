@@ -472,4 +472,21 @@ bounced.splice(i, 1);
 - I thought that looking for falsy values may be causing some confusion in the code. I really can't explain what it is though.
 - So I changed the code to look for truthy values instead.
 - I was sticking to falsy values because I wanted to get more practice using splice and slice methods.
--
+
+## New Method
+
+### sort()
+
+- use ```sort()``` to sort elements of an array in logical sequence.
+- default sort order is ascending
+
+```js
+let numbers = [4, 56, 23, 8]
+numbers.sort(function(a, b) {
+    return  a - b;
+});
+console.log(numbers); // [4, 8, 23, 56]
+```
+
+## Where do I Belong
+
