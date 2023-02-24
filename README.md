@@ -424,7 +424,6 @@ let booleanValue = !!value;
 console.log(booleanValue); // false
 ```
 
-
 ## Falsy Bouncer
 
 - Create a function that removes all falsy values from an array
@@ -462,7 +461,7 @@ function bouncer(arr) {
 
 - This returned some unexpected results. I believe it was ["", false, 9]
 - I later realized that 'arr[i]' is directing to the string rather than the index value.
-- So I changed the splice line to 
+- So I changed the splice line to
 
 ```js
 bounced.splice(i, 1);
@@ -473,4 +472,4 @@ bounced.splice(i, 1);
 - I thought that looking for falsy values may be causing some confusion in the code. I really can't explain what it is though.
 - So I changed the code to look for truthy values instead.
 - I was sticking to falsy values because I wanted to get more practice using splice and slice methods.
-- 
+-
