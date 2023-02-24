@@ -403,4 +403,74 @@ console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1)); // [4, 3, 2, 1, 5, 6]
 - I didn't take into account that each iterated element is inserted in to the same index 'n' position.
 - Which in turn would 'push' the inserted elements.
 - Reverse the loop iteration to reverse this effect.
-  
+
+## More new methods
+
+### Boolean()
+
+- Use ```Boolean()``` (notice the uppercase B) to convert any value to a boolean value (i.e. true or false)
+
+```js
+let value = "string";
+let booleanValue = Boolean(value);
+console.log(booleanValue); // true
+```
+
+- You can also use double negation operator (!!)
+
+```js
+let value = null;
+let booleanValue = !!value;
+console.log(booleanValue); // false
+```
+
+
+## Falsy Bouncer
+
+- Create a function that removes all falsy values from an array
+- The original array should not be modified
+
+```js
+function bouncer(arr) {
+    let bounced = [];
+    for (let i = 0; i < arr.length; i++) {
+        let booleanValue = !!(arr[i]);  // or you can remove this line and go directly to the if statement
+        if (booleanValue === true) {    // if (Boolean(arr[i]) === true)
+            bounced.push(arr[i]);
+        }
+    }
+    return bounced;
+}
+
+console.log(bouncer([7, "ate", "", false, 9])); // [7, "ate", 9]
+```
+
+- I originally tried going the other way, looking for falsy values to kick out
+
+```js
+function bouncer(arr) {
+    let bounced = arr.slice(0);
+    for (let i = 0; i < arr.length; i++) {
+        let booleanValue = Boolean(arr[i]);
+        if (booleanValue === false) {
+            bounced.splice(arr[i], 1);
+        }
+    }
+    return bounced;
+}
+```
+
+- This returned some unexpected results. I believe it was ["", false, 9]
+- I later realized that 'arr[i]' is directing to the string rather than the index value.
+- So I changed the splice line to 
+
+```js
+bounced.splice(i, 1);
+```
+
+- But this also returned an unexpected result.
+- [7, "ate", false]
+- I thought that looking for falsy values may be causing some confusion in the code. I really can't explain what it is though.
+- So I changed the code to look for truthy values instead.
+- I was sticking to falsy values because I wanted to get more practice using splice and slice methods.
+- 
