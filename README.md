@@ -538,3 +538,5 @@ function getIndexToIns(arr, num) {
   - return the value of the current 'i'.
 - If none of the numerical values in the array is greater than the number passed to the function (in other words, no match is found until the end of the array)
 - return the length of the array.
+
+- Always think about whether to place something before the loop, inside the loop, or after the loop.
