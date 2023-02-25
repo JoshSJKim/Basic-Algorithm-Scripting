@@ -568,3 +568,15 @@ function mutation(arr) {
     return true;
 }
 ```
+
+## Chunky Monkey
+
+- Write a function that accepts an array 'arr' and a number 'size'
+- The function should split the elements of the original array into groups of 'size'
+- It should then push those split elements into separate subarrays of one nested array
+
+```js
+function chunkArrayInGroups(arr, size) {
+    let newArr = [];
+    
+}
