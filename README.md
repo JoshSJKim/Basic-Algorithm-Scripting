@@ -479,6 +479,10 @@ bounced.splice(i, 1);
 
 - use ```sort()``` to sort elements of an array in logical sequence.
 - default sort order is ascending
+- The default comparison criteria is based on UTF-16 code unit values (I really don't know what this means but it's not the common logical order)
+- If no function is passed to .sort(), by default, it will convert the elements into strings for comparison.
+
+- by passing a function to the sort method, you can specify the sorting order.
 
 ```js
 let numbers = [4, 56, 23, 8]
@@ -488,5 +492,49 @@ numbers.sort(function(a, b) {
 console.log(numbers); // [4, 8, 23, 56]
 ```
 
+- It took me a while to understand this.
+- The function passed as the parameter for numbers.sort will take two numbers and compare the two.
+- in the array above, first two will be 4 (a) and 56 (b)
+- If 'a - b' is negative, it means that a is less than b; So it their positions will not change
+- The next pair would be 56 (a) and 23 (b)
+- If 'a - b' is positive, it means that a is greater than b; so a will move to the right of b.
+- if 'a - b' is 0, it means that the two numbers are equal and order does not matter.
+- this process will repeat until swapping of positions is no longer required, resulting in an ascending numerical array.
+
 ## Where do I Belong
 
+- create a function that accepts two arguments - an array 'arr' and a number 'num'.
+- The function should sort the elements of the array in logical sequence and determine the lowest index at which the 'num' value should be inserted.
+- The return value should be a number that indicates the index value.
+- if the number specified is greater than the last value of the array, it should return the last number's index value + 1 (which is also equal to the array length)
+- if the array is empty, it should return 0.
+
+```js
+function getIndexToIns(arr, num) {
+    if (arr.length === 0) { // Placed here before anything else to check if the array is empty
+        return 0;           // If it's empty, there is no need for the loop. return 0
+    }
+    arr.sort(function (a, b) { 
+        return a - b;
+    });
+    for (let i = 0; i < arr.length; i++) {
+        if (num <= arr[i]) {
+            return i;
+        }
+    }
+    return arr.length; // Initially made the mistake of placing this one level deeper, which is within the loop.
+                       // It needs to finish the loop and determine that there is no match and return the arr.length
+}
+```
+
+- The function takes an array and a number.
+- 'if' statement is placed outside of the loop.
+  - It will check the array length to begin with. If the array length is 0 (i.e. it's an empty array),
+  - it will immediately return 0. No need to iterate through the array.
+- The sort function will sort the elements of the array from lowest to highest numerical value.
+- Now for the loop.
+  - Use a for loop to iterate through the array
+  - During iteration, as soon as it encounters a numerical value in the element that is greater than the number passed to the function,
+  - return the value of the current 'i'.
+- If none of the numerical values in the array is greater than the number passed to the function (in other words, no match is found until the end of the array)
+- return the length of the array.
