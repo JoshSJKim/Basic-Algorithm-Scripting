@@ -540,3 +540,31 @@ function getIndexToIns(arr, num) {
 - return the length of the array.
 
 - Always think about whether to place something before the loop, inside the loop, or after the loop.
+
+## Mutations
+
+- Create a function that accepts an array containing two strings as its argument.
+- Return true if the first string contains all of the characters of the second string
+- ignore letter-casing
+
+- convert all letter casing to upper or lower for both strings
+- It would be easier to work with each string separately.
+- using a for loop, iterate through the second string and check if each character is found in the first string using .indexOf()
+- Use an 'if' statement to return false if it encounters a character that is not found in the first string.
+- If .indexOf() is used to return true if a character match is found, it will always return true if the first character in the second string is a match, regardless if there is a character that does not match later in the string.
+- So, look for non-matching character to return false.
+- If it does not return false until the end of the string, return 'true' (after the loop is finished iteration)
+
+```js
+function mutation(arr) {
+    let str1 = arr[0].toLowerCase(); // both of the strings can be converted to uppercase
+    let str2 = arr[1].toLowerCase();
+
+    for (let i = 0; i < str2.length; i++) {
+        if (str1.indexOf(str2[i]) === -1) {
+            return false;
+        }
+    }
+    return true;
+}
+```
