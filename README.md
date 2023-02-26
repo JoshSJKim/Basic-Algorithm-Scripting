@@ -576,7 +576,17 @@ function mutation(arr) {
 - It should then push those split elements into separate subarrays of one nested array
 
 ```js
-function chunkArrayInGroups(arr, size) {
-    let newArr = [];
-    
+function chunkArrayInGroups(arr, size) {    // function accepts an array 'arr' and a number 'size' as its arguments.
+    let newArr = [];                        // initialize a new variable 'newArr' with an empty array
+    // Use a 'for' loop to iterate through the array passed to the function.
+    // Out of habit, I initially had 'i++' for the increment value. But this was adding 4 subarrays to the result.
+    // Had to do some thinking and trial & error process to realize that it should increment by the specified 'size'
+    for (let i = 0; i < arr.length; i+=size) {
+        // initialize 'subArr' with sliced subarrays. 'i' would indicate the current element, and it should slice at 'i + size'.
+        // it works well because the index value of 'i + size' is not inclusive when slice is executed.
+        let subArr = arr.slice(i, i + size);
+        newArr.push(subArr); // push the sliced subArr to newArr and return.
+    }
+    return newArr;
 }
+```
