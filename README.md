@@ -35,6 +35,21 @@ h + dlrow olle
 dlrow olleh     // reversed string
 ```
 
+- There is a simpler approach to this.
+- The use of split(), reverse(), and join() methods.
+
+```js
+function reverseString(str) {
+    return str.split("").reverse().join("");
+}
+
+console.log(reverseString("hello")); // olleh
+```
+
+- .split("") will split the string by each character.
+- .reverse() will reverse the order of the characters
+- .join("") will join the separated characters into a new string.
+
 ## Factorialize a Number
 
 - Return a factorial of a positive integer passed to the function
