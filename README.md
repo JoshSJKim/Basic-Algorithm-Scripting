@@ -65,6 +65,23 @@ function factorialize(num) { // Use recursive function
 console.log(factorialize(5)); // 5 * 4 * 3 * 2 * 1 = 120
 ```
 
+- Although the recursive function is efficient and easy to read, I am trying other methods to achieve the same result.
+
+```js
+function factorialize(num) {
+    let newArr = [];
+    while (num > 0) {
+        newArr.push(num);
+        num--;
+    }
+    return newArr.reduce((accu, val) => accu * val, 1);
+}
+```
+
+- Use a while loop to generate an array 'newArr' containing the range of numbers to factorialize.
+- reduce method is called on the 'newArr' with the accumulator argument and each element of 'newArr', 'val'.
+- multiply the accumulator by val with an initial value of 1 for the accumulator.
+
 ## Find the Longest Word in a String
 
 - create a function that takes a sentence as a string argument
