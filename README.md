@@ -374,6 +374,21 @@ function findElement(arr, func) {
 }
 ```
 
+- Tried the following and surprised it worked
+
+```js
+function findElement(arr, func) {
+  const result = arr.filter(func);
+  return result[0];
+}
+
+findElement([1, 2, 3, 4], num => num % 2 === 0)
+```
+
+- use filter on arr and pass the callback function
+- The callback function will iterate through the array and return a new array with even numbers, which in the case above would be [2, 4]
+- Then just return the first element at index 0 to get the first element that passes the truth test.
+
 ## Boo Who
 
 - create a function that checks if the argument passed to the function is a 'boolean'
