@@ -170,6 +170,20 @@ function largestOfFour(arr) {
 }
 ```
 
+- Tried another solution. A bit more concise
+
+```js
+function largestOfFour(arr) {
+    let newArr = [];                // declare a new array 'newArr' with an empty array
+    for (let i = 0; i < arr.length; i++) { // 'for' loop to iterate through the original array
+        let biggestNum = Math.max(...arr[i]); // iterate through each sub-array and retrieve the largest numbers from each using Math.max. 
+                                              // remember to use spread operator
+        newArr.push(biggestNum);              // push the retrieved numbers in the 'newArr'
+    }
+    return newArr;
+}
+```
+
 ## Confirm the Ending
 
 - Create a function 'confirmEnding', which takes two strings (str, target) as its arguments.
