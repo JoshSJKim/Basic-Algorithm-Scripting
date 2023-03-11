@@ -410,6 +410,19 @@ function booWho(bool) {
 }
 ```
 
+- To this point, I still didn't understand why 'typeof(bool)' had to be compared with the string 'boolean', not ```Boolean```
+- ```Boolean``` with a capital 'B' is a constructor function used to create 'boolean' objects.
+
+```js
+const myBoolean = new Boolean(true);
+```
+
+- The above example will create a boolean object 'myBoolean' with a value 'true' assigned to it.
+- But if you check the 'typeof(myBoolean)' it will still return 'object' since it is a created object with a boolean value assigned to it.
+- However, 'true' and 'false' are known as ```primitive boolean values```.
+- in other words, if you check 'typeof(true)' or 'typeof(false)' it will return the string 'boolean'
+- since we're looking for the ```primitive boolean values```, it makes sense to compare it to the string 'boolean'
+
 ## Various Methods
 
 - There are more and more methods that are mentioned in the challenges, but I have not yet been introduced to them.
