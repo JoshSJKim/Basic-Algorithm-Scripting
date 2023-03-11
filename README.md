@@ -115,6 +115,22 @@ function findLongestWordLength(str) {
 }
 ```
 
+- Tried another solution. Seems similar but a bit simpler
+
+```js
+function findLongestWordLength(str) {
+    let strArr = str.split(" "); // split the string into an array
+    let longestLength = 0;       // initialize longestLength with 0 assigned to it to keep track of the longest length of word globally
+    for (let i = 0; i < strArr.length; i++) {   // use for loop to iterate through split array
+        let currentLength = strArr[i].length;   // assign 'currentLength' to the length of the current string being processed
+        if (currentLength > longestLength) {    // if 'currentLength' is greater than 'longestLength'
+            longestLength = strArr[i].length;   // 'longestLength' is equal to that word at that index
+        }
+    }
+    return longestLength;
+}
+```
+
 ## Return Largest Number in Arrays
 
 - An array containing sub-arrays is passed to a function.
