@@ -295,6 +295,15 @@ function repeatStringNumTimes(str, num) {
 }
 ```
 
+- Another method is introduced in this challenge but forbids me to use it
+- ```.repeat()```
+
+```js
+function repeatStringNumTimes(str, num) {
+    return str.repeat(num);
+}
+```
+
 ## Truncate a String
 
 - create a function that truncates a string (first argument) if it is longer than the specified max string length (second argument).
@@ -316,6 +325,32 @@ function truncateString(str, num) {
         newStr = str;
     }
     return newStr;
+}
+```
+
+- I tried the following
+
+```js
+function truncateString(str, num) {
+    return str.slice(0, 8).concat("...");
+}
+```
+
+- The above passes as long as the second argument is an actual numerical value.
+- But FCC had to throw in challenges like 'str.length' and 'str.length + 2'.
+- I guess that's the point of the challenge, but I learned something new today.
+
+- Thought of this in the shower
+- convert the 'str.length' value to a numerical value.
+
+```js
+function truncateString(str, num){
+    num = Number(num);
+    if (str.length > num) {
+        return str.slice(0, num).concat("...");
+    } else {
+        return str;
+    }
 }
 ```
 
