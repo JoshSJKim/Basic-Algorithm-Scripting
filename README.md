@@ -685,6 +685,21 @@ bounced.splice(i, 1);
 - So I changed the code to look for truthy values instead.
 - I was sticking to falsy values because I wanted to get more practice using splice and slice methods.
 
+- Tried something more concise
+
+```js
+function bouncer(arr) {
+    let bounced = arr.filter(elem => !!elem === true);
+    return bounced;
+}
+```
+
+- declare a new variable for the array to be returned so as not to confuse with the original array
+- use filter on the array 'arr' and pass a callback function that checks if each element of the array has a truthy boolean value (using the double negation operator)
+- If the element is truthy, it will be added to the filtered array.
+- If the element value is falsy, it will not be added.
+- The new filtered array 'bounced' is returned with only truthy values
+
 ## New Method
 
 ### sort()
