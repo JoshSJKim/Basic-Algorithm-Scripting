@@ -571,6 +571,51 @@ console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1)); // [4, 3, 2, 1, 5, 6]
 - Which in turn would 'push' the inserted elements.
 - Reverse the loop iteration to reverse this effect.
 
+- tried something else without the for loop
+
+```js
+function frankenSplice(arr1, arr2, n) {
+    arr2 = arr2.slice(0).splice(n, 0, ...arr1);
+    return arr2;
+}
+```
+
+- Tried the above initially but it returned an empty array.
+- arr2.slice(0) effectively created a copy of arr2, but the splice method returns an array with the deleted elements.
+- Since nothing is deleted using the splice method, it returns an empty array.
+
+```js
+function frankenSplice(arr1, arr2, n) {
+    arr2.splice(n, 0, ...arr1);
+    return arr2;
+}
+```
+
+- This achieves the intended result, but it modifies the original array, so it doesn't pass
+
+```js
+function frankenSplice(arr1, arr2, n) {
+    arr2 = arr2.slice(0);
+    arr2.splice(n, 0, ...arr1);
+    return arr2;
+}
+```
+
+- The above code works, but I think it would be better to declare a new variable for arr2 for clarity and readability.
+
+
+```js
+function frankenSplice(arr1, arr2, n) {
+    let newArr2 = arr2.slice(0);
+    newArr2.splice(n, 0, ...arr1);
+    return newArr2;
+}
+```
+
+- create a copy of arr2 using slice at index 0.
+- use splice on the copied array to insert arr1 (using spread operator, otherwise it will insert the array itself) at index 'n', and delete 0 elements
+- return the modified array
+
 ## More new methods
 
 ### Boolean()
