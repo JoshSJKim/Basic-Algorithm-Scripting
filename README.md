@@ -263,7 +263,6 @@ function confirmEnding(str, target) {
 }
 ```
 
-
 ## Repeat a String Repeat a String
 
 - create a function that repeats a string (str) for 'num' times specified.
@@ -513,6 +512,27 @@ console.log(titleCase("I'm a little tea pot")); // I'm A Little Tea Pot
 
 - I'm sure there are much simpler methods.
 - But this is what I have at the moment
+
+- tried a different approach
+
+```js
+function titleCase(str) {
+    str = str.toLowerCase().split(/\s+/);
+    for (let i = 0; i <str.length; i++) {
+        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+    }
+    return str.join(" ");
+}
+```
+
+- reassign th string by converting all characters to lower case and split string at any whitespace character using regex
+- use a 'for' loop to iterate through the string array created by splitting the string
+- for each of the string element int the array, convert the characters at index 0 of the string (charAt(0)) to uppercase
+  - note that this portion of the code will only return the capitalized portion of the string ['I', 'A', 'L', 'T', 'P'].
+  - the rest of the string needs to be concatenated.
+- To concatenate, slice the current string from index 1 to the end of the string.
+- the result would be [ 'I\'m', 'A', 'Little', 'Tea', 'Pot' ]
+- Then use .join() method to convert the array back into a single string.
 
 ## Slice and Splice
 
