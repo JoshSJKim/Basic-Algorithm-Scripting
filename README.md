@@ -603,7 +603,6 @@ function frankenSplice(arr1, arr2, n) {
 
 - The above code works, but I think it would be better to declare a new variable for arr2 for clarity and readability.
 
-
 ```js
 function frankenSplice(arr1, arr2, n) {
     let newArr2 = arr2.slice(0);
@@ -767,6 +766,28 @@ function getIndexToIns(arr, num) {
 - return the length of the array.
 
 - Always think about whether to place something before the loop, inside the loop, or after the loop.
+
+- Tried a different approach
+
+```js
+function getIndexToIns(arr, num) {
+    let newArr = arr.slice(0);      
+
+    newArr.splice(0, 0, num);       
+    newArr.sort(function (a, b) {
+        return a - b;
+    });
+    return newArr.IndexOf(num);
+}
+```
+
+- create a copy of the original array using slice method
+- use splice on the copied array to insert the 'num' value at index 0 and delete 0 elements
+  - Note that you could insert the 'num' value at any index for the purposes of this challenge since it will be sorted anyways
+  - It's inserted at 0 for sake of simplicity.
+  - If you want it at the end of the array, you could use 'newArr.length' for the first argument
+- Use the 'sort' method to pass a function that will sort the array in ascending order
+- Finally, return the index position of the 'num' value using 'indexOf()' method.
 
 ## Mutations
 
