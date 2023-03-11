@@ -283,6 +283,18 @@ function repeatStringNumTimes(str, num) {
 }
 ```
 
+- Tried this using recursive function
+
+```js
+function repeatStringNumTimes(str, num) {
+    if (num <= 0) {     // set the base case. If num is less than or equal to 0, 
+        return "";      // return an empty string.
+    } else {            // if not
+        return str + repeatStringNumTimes(str, num - 1); // keep concatenating string until base case is reached.
+    }
+}
+```
+
 ## Truncate a String
 
 - create a function that truncates a string (first argument) if it is longer than the specified max string length (second argument).
