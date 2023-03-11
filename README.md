@@ -250,9 +250,19 @@ function confirmEnding(str, target) {
 
 ```js
 function confirmEnding(str, target) {
-    return str.slice(-target.length) === target;
+    return str.slice(-target.length) === target;    // REMEMBER THIS!!!! 
 }
 ```
+
+- There is a method introduced here but I'm not supposed to use it
+- ```.endsWith()```
+
+```js
+function confirmEnding(str, target) {
+    return str.endsWith(target); // That's it!?
+}
+```
+
 
 ## Repeat a String Repeat a String
 
