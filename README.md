@@ -817,6 +817,38 @@ function mutation(arr) {
 }
 ```
 
+- Tried it without assigning any new variables. I think the code above is more readable.
+- Can't think of any other way at the moment
+
+```js
+function mutation(arr) {
+    for (let i = 0; i > arr[1].length; i++) {
+        if (arr[0].toLowerCase().indexOf(arr[1][i].toLowerCase()) === -1) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+- I cheated and asked chatGPT for a simplified answer.
+
+```js
+function mutation(arr) {
+    return arr[1]
+      .toLowerCase()
+      .split("")
+      .every(char => arr[0].toLowerCase().includes(char));
+}
+```
+
+- In the code above, the second argument (arr[1]) is converted using .toLowerCase()
+- then it is split according to each character in an array
+- Then it iterates through every character and checks if each character is included in 'arr[0]', the first argument.
+  - arr[0] is converted to lower case at this point.
+- If every character passes true, the function will return true.
+- If not, it will return false.
+
 ## Chunky Monkey
 
 - Write a function that accepts an array 'arr' and a number 'size'
